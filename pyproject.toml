@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iot-pipeline"
+version = "1.0.0"
+description = "Pipeline downstream: PCAP + JSON de eventos → flujos NFStream etiquetados en Apache Parquet"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Eliseo Sebastián Yáñez Robles" },
+]
+dependencies = [
+    "pandas>=2.0.0",
+    "pyarrow>=14.0.0",
+    "nfstream>=6.5.0",
+    "polars>=0.20.0",
+    "scikit-learn>=1.4.0",
+    "joblib>=1.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0"]
+horizon = ["scapy>=2.5.0"]
+
+[project.scripts]
+iot-pipeline = "pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

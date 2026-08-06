@@ -1,0 +1,12 @@
+# SH-DATASET metadata export
+# csv_version: 1.0
+# schema_version: 1.0
+# experiment_id: EXP-DEMO-001
+# environment: SmartHomeLab-v1
+# scenario_name: Demo pipeline test
+# start_time: 2026-06-16T10:00:00.000000Z
+# planned_duration_s: 600
+row_id,experiment_id,run_id,absolute_timestamp,relative_timestamp_s,event_kind,source_node,source_ip,source_mac,target_node,target_ip,target_mac,protocol,action,label,mitre_technique,mitre_subtechnique,attack_intensity,benign_profile,duration_s,notes,row_checksum
+1,EXP-DEMO-001,run01,2026-06-16T10:00:00.000000Z,0.0,benign,echo01,192.168.100.40,AA:BB:CC:DD:EE:40,smartbulb01,192.168.100.10,AA:BB:CC:DD:EE:01,MQTT,bulb_on,benign,,,,bulb_state_updates,30.0,warmup benign,abc123
+2,EXP-DEMO-001,run01,2026-06-16T10:05:00.000000Z,300.0,attack,kalivm,192.168.100.50,AA:BB:CC:DD:EE:50,camera01,192.168.100.20,AA:BB:CC:DD:EE:20,TCP,dos_http,DoS,T1499.001,,high,,180.0,attack window,def456
+3,EXP-DEMO-001,run01,2026-06-16T10:12:00.000000Z,720.0,benign,echo01,192.168.100.40,AA:BB:CC:DD:EE:40,smartplug01,192.168.100.30,AA:BB:CC:DD:EE:30,MQTT,plug_toggle,benign,,,,smartplug_telemetry,20.0,post-attack benign,ghi789

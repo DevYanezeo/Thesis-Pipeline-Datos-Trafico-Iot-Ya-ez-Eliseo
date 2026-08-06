@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Salidas de corridas (nunca versionar)
+output/
+**/flows.parquet
+**/flows_baseline.csv
+**/manifest.json
+**/traceability_report.json
+**/io_metrics.json
+**/ml-handoff/
+
+# Capturas grandes (suministrar localmente)
+fixtures/**/*.pcap
+*.pcap
+*.pcapng

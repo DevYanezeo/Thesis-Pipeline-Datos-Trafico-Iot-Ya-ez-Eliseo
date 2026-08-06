@@ -1,0 +1,78 @@
+{
+  "experiment_id": "00",
+  "environment": "Casa alumno",
+  "orchestrator_version": "1.0.0",
+  "started_at": "2026-06-13T01:44:22.467428+00:00",
+  "finished_at": "2026-06-13T01:46:26.198607+00:00",
+  "planned_duration_s": 120,
+  "actual_duration_s": 120.08,
+  "state": "STOPPING",
+  "capture_interface": "Wi-Fi",
+  "devices": {
+    "192.168.1.84": "attacker",
+    "192.168.1.81": "target",
+    "192.168.1.82": "target",
+    "172.19.103.156": "attacker",
+    "192.168.1.93": "attacker"
+  },
+  "events_total": 3,
+  "events_fired": 3,
+  "flows_extracted": 60497,
+  "events": [
+    {
+      "event_id": "c38e76a5",
+      "offset_s": 10,
+      "event_type": "benign",
+      "action": "take_snapshot",
+      "source": "192.168.1.84",
+      "target": "192.168.1.81",
+      "duration_s": 10,
+      "label": "take_snapshot",
+      "notes": "",
+      "status": "completed",
+      "scheduled_dt": "12/06/2026 21:44:31"
+    },
+    {
+      "event_id": "bcfd15fd",
+      "offset_s": 20,
+      "event_type": "attack",
+      "action": "port_scan",
+      "source": "172.19.103.156",
+      "target": "192.168.1.81",
+      "duration_s": 60,
+      "label": "port_scan",
+      "notes": "",
+      "status": "completed",
+      "scheduled_dt": "12/06/2026 21:44:41"
+    },
+    {
+      "event_id": "b5114d47",
+      "offset_s": 60,
+      "event_type": "attack",
+      "action": "syn_flood",
+      "source": "192.168.1.93",
+      "target": "192.168.1.82",
+      "duration_s": 30,
+      "label": "syn_flood",
+      "notes": "",
+      "status": "completed",
+      "scheduled_dt": "12/06/2026 21:45:21"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "00_20260612_214421.pcap",
+      "type": "PCAP",
+      "size_bytes": 23082088,
+      "sha256": "79f9ffc695458568cc75c1b62ee933a2d44a7739c8faa72c76f8dee8f8a6302c",
+      "path": "artifacts/upstream/pcap/00_20260612_214421.pcap"
+    },
+    {
+      "name": "00_20260612_214421_flows.csv",
+      "type": "CSV",
+      "size_bytes": 8667144,
+      "sha256": "fdcce271c8a900968136352010ca5408ac2283f0f55e84cfae464420eb75735d",
+      "path": "artifacts/upstream/flows/00_20260612_214421_flows.csv"
+    }
+  ]
+}

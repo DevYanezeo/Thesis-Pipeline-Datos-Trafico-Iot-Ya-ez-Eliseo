@@ -1,0 +1,355 @@
+{
+  "experiment_id": "00",
+  "environment": "Casa alumno",
+  "orchestrator_version": "1.0.0",
+  "started_at": "2026-07-02T23:10:59.465111+00:00",
+  "finished_at": "2026-07-03T01:15:21.685993+00:00",
+  "planned_duration_s": 172800,
+  "actual_duration_s": 7404.1,
+  "state": "ABORTED",
+  "capture_interface": "Wi-Fi",
+  "devices": {
+    "192.168.1.81": "target",
+    "192.168.1.82": "benign",
+    "172.19.103.156": "attacker",
+    "192.168.1.93": "attacker",
+    "192.168.1.84": "attacker"
+  },
+  "events_total": 5,
+  "events_fired": 5,
+  "flows_extracted": 17144,
+  "events": [
+    {
+      "event_type": "attack",
+      "action": "scapy_syn_flood",
+      "target": "192.168.1.81",
+      "source": "192.168.1.84",
+      "offset_s": 300,
+      "duration_s": 0,
+      "status": "completed",
+      "label": "attack",
+      "sublabel": "artificial",
+      "category": "",
+      "subcategory": "",
+      "mitre_ref": "T1498.001",
+      "tool": "python/scapy"
+    },
+    {
+      "event_type": "benign",
+      "action": "take_snapshot_auth",
+      "target": "192.168.1.82",
+      "source": "192.168.1.89",
+      "offset_s": 600,
+      "duration_s": 30,
+      "status": "completed",
+      "label": "benign",
+      "sublabel": "artificial"
+    },
+    {
+      "event_type": "attack",
+      "action": "scapy_syn_flood",
+      "target": "192.168.1.82",
+      "source": "192.168.1.89",
+      "offset_s": 600,
+      "duration_s": 0,
+      "status": "completed",
+      "label": "attack",
+      "sublabel": "artificial",
+      "category": "",
+      "subcategory": "",
+      "mitre_ref": "T1498.001",
+      "tool": "python/scapy"
+    },
+    {
+      "event_type": "attack",
+      "action": "scapy_syn_flood",
+      "target": "192.168.1.82",
+      "source": "192.168.1.89",
+      "offset_s": 900,
+      "duration_s": 0,
+      "status": "completed",
+      "label": "attack",
+      "sublabel": "artificial",
+      "category": "",
+      "subcategory": "",
+      "mitre_ref": "T1498.001",
+      "tool": "python/scapy"
+    },
+    {
+      "event_type": "attack",
+      "action": "dos_http",
+      "target": "192.168.1.82",
+      "source": "192.168.1.89",
+      "offset_s": 3600,
+      "duration_s": 60,
+      "status": "completed",
+      "label": "attack",
+      "sublabel": "artificial",
+      "category": "Actions on Objectives",
+      "subcategory": "denial_of_service",
+      "mitre_ref": "T1499.001",
+      "tool": "slowloris"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "00_20260702_191058.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001364,
+      "sha256": "c35c5e7505eef8b0595b4a5751ba4311580ff7159592906ff164332d0adcf634",
+      "path": "artifacts/upstream/pcap/00_20260702_191058.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part1.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000364,
+      "sha256": "13e6a75e8cfc491c378821211ddb432192aeb5de3d1b2ed1195f151b4c3cd815",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part1.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part10.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000312,
+      "sha256": "af15abcb15d921e11ab8ea220c6644ce439fc91989a8898a58f89279bab8dd30",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part10.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part11.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000068,
+      "sha256": "44261525e36c5a572bccb64adba402353edbf5de4dca09d10e54af9afb710aba",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part11.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part12.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000124,
+      "sha256": "fb8158c6c8c50aeda850f7f62fd2b605df48ca9005368dc12bc6ffccb2342f4f",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part12.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part13.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001380,
+      "sha256": "b5c1e46bfc550d783e6f833a0535150f9880dfabc818381fd8b88c8b04006954",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part13.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part14.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001092,
+      "sha256": "3aaaf5d187783529c1e1a15774db77d07b7ff04300d15136d1bf9cf0e11cdcd8",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part14.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part15.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000668,
+      "sha256": "cb3e2a6525b43ac34f2cb220b57f3ee0d1811ca8ec6f58ff68dd39409ce8d662",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part15.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part16.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000228,
+      "sha256": "84eae5b09ab8b3bc171386e92f9a1e4b08b558f9bb097799a32acc93092369fe",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part16.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part17.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000960,
+      "sha256": "ad33d906fed168e626f15787380ecc220df57ac953ce85771a743caeddcda369",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part17.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part18.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000916,
+      "sha256": "19b324d249b7ad5cedddb6535019d02b99143293cc998796d0f498e97c15ca58",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part18.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part19.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000608,
+      "sha256": "9225c80979fb99a2275945ad42a623bb2d194f5312af2f5afa848ab862b4a517",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part19.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part2.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001288,
+      "sha256": "3cee35bed4693fbd49d9375696ae2fdfcd5f0c7a2bbda2a4319aee65fd371129",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part2.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part20.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001200,
+      "sha256": "8a1edd2820c5405b257e37837969e2e6cba88c930dadd0dcf93593c3f761afc8",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part20.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part21.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000764,
+      "sha256": "5ae9db60e617d12b68f0bce6372b40275341899c5a542e81f813658b6cba8a2e",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part21.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part22.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000020,
+      "sha256": "1ba7999b415e6d4e0862d4845009eac42990c73030631da0d82d1a098f0bbeca",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part22.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part23.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001460,
+      "sha256": "d9c90d9feb8bef8d36e3a6e64f30b88c12e1e13fcda7f1640e929019446ad8fd",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part23.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part24.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001056,
+      "sha256": "0454997ec4b88208595927107a872df89560c668339decacd3cc30f137d9d502",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part24.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part25.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000612,
+      "sha256": "a91f7d373fc56e309d9985fe488358b3223acfe0db190424703fb587f9262454",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part25.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part26.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000468,
+      "sha256": "e376d2a9fc11f65326bd3a38e0fe5a1f3e558eef01cd5b821448e6aef92b6bc1",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part26.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part27.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000332,
+      "sha256": "597eeaa84d934ff038ca9bb0c2fe064059c6497965f807ec1ef6d32488af90a5",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part27.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part28.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000176,
+      "sha256": "76df83390ea4b387f101f8738c03f776df03415fd915bbed07916fb2db4ba4e7",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part28.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part29.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001288,
+      "sha256": "3eb28ee52f1581a308bb4407e4c5be84556af5142bbf8abc1acdacc2d3145ab3",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part29.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part3.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000904,
+      "sha256": "a72e3dc958a12b3c0f17614c30ae14c09328d885a281d3da883058a739a50089",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part3.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part30.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000084,
+      "sha256": "af2f0a2bbf14081b827127774294a1ee57ab746a2fd97f6a6307d475ff53e590",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part30.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part31.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000484,
+      "sha256": "a71443bfcb3aec2d38b720100cc6715a3b905ad14b30174a147baaf580957a42",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part31.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part32.pcap",
+      "type": "PCAP",
+      "size_bytes": 60001148,
+      "sha256": "721f2ec7aceb60222bf1fd66a623c17f7d28bbb9bfdf386b403499882dead943",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part32.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part33.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000088,
+      "sha256": "523c9b6869a96be3238e88738699c7cf28d2549283c02655849c82b44243d3d4",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part33.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part34.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000900,
+      "sha256": "8830cb1708e951462d42721859594d25761b3057cf6b95270fd634b8a05b12de",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part34.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part35.pcap",
+      "type": "PCAP",
+      "size_bytes": 376,
+      "sha256": "6825790ba2d994b7b238e224bda63cd751f6f48984bbdda632e0527e56c8faea",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part35.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part4.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000464,
+      "sha256": "530c96ebc1e91346a51da0ee8d999d0336def96e8ae04bc2c896415258bc612b",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part4.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part5.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000952,
+      "sha256": "aa51e862d124e1b680479226b8ef83c3c15f1a25c6f85ff1d965e434678ca096",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part5.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part6.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000244,
+      "sha256": "8c5ee0fe591bec16cb5f597897481daea0ee9af920dade0dbb235e95cbe33a10",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part6.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part7.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000708,
+      "sha256": "6f30e3fd42d7b29a3ea32dff09f816a673fa459f5252345a31e49ea4be4b7659",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part7.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part8.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000216,
+      "sha256": "3d953e6a472cd10d37772590164fb647669172b2ceb73d0cab729dc8b58560a0",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part8.pcap"
+    },
+    {
+      "name": "00_20260702_191058_part9.pcap",
+      "type": "PCAP",
+      "size_bytes": 60000252,
+      "sha256": "48667493246c0273bdd6372e7ead42525363fb752eafa0310b0ef498dd9bd48f",
+      "path": "artifacts/upstream/pcap/00_20260702_191058_part9.pcap"
+    },
+    {
+      "name": "00_20260702_191058_flows.csv",
+      "type": "CSV",
+      "size_bytes": 2463087,
+      "sha256": "51383669c08c0073343f003889d0f8c0162815a06e80a6286fd7015f311cbdb5",
+      "path": "artifacts/upstream/flows/00_20260702_191058_flows.csv"
+    }
+  ]
+}

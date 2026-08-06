@@ -1,11 +1,17 @@
-# Pipeline de datos — tráfico IoT (smarthome)
+# Pipeline de datos para tráfico IoT en entornos smarthome
 
-Paquete Python **downstream** que transforma capturas de tráfico IoT y sus eventos asociados en un dataset de flujos etiquetados, persistido en Apache Parquet.
+Repositorio de **implementación** del Trabajo de Título de Eliseo Sebastián Yáñez Robles  
+(Ingeniería de Ejecución en Computación e Informática — DIINF, Universidad de Santiago de Chile).  
+Profesor guía: Juan Ignacio Iturbe Araya.
 
-**Entrada:** PCAP + JSON de eventos (contrato con la capa de orquestación experimental).  
-**Salida:** `flows.parquet`, manifiesto, reporte evento↔flujo; opcionalmente paquete ML sin fuga de datos.
+El trabajo desarrolla un **pipeline de datos** que, a partir de capturas de red de un hogar inteligente (archivos PCAP) y del registro de eventos de la capa de orquestación experimental (JSON), produce un dataset de flujos de red etiquetados y persistidos en Apache Parquet. El objetivo es entregar un insumo reproducible —con origen documentado entre evento y flujo, y con menor costo de almacenamiento/lectura que un CSV plano— para investigaciones posteriores en detección de anomalías, **sin** entrenar el IDS dentro de este proyecto.
 
-> Este repositorio contiene **únicamente** el desarrollo del pipeline (código, tests, contrato y guías de uso). No incluye el documento de tesis, capturas grandes ni salidas de corridas.
+El pipeline opera **aguas abajo** (*downstream*): no orquesta escenarios, no inyecta ataques y no captura el tráfico en el testbed. Esas responsabilidades quedan en la capa *upstream*; aquí solo se ingieren sus artefactos, se extraen flujos con NFStream, se etiquetan y se persisten.
+
+Este repositorio contiene el **código, las pruebas y la documentación técnica** del software. El documento de tesis, las capturas grandes y las salidas de corridas no se versionan aquí.
+
+**Entrada:** PCAP + JSON de eventos.  
+**Salida:** `flows.parquet`, manifiesto, reporte evento↔flujo; opcionalmente un paquete listo para ML sin fuga de datos.
 
 ## Requisitos
 

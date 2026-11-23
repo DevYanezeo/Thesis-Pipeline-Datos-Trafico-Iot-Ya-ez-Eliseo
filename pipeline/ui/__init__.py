@@ -1,0 +1,1 @@
+"""Consola TUI opcional del pipeline (Textual)."""

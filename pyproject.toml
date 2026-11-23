@@ -24,6 +24,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8.0.0"]
 horizon = ["scapy>=2.5.0"]
+notebook = ["jupyterlab>=4.0", "matplotlib>=3.7"]
+ui = ["textual>=0.80.0"]
 
 [project.scripts]
 iot-pipeline = "pipeline.cli:main"

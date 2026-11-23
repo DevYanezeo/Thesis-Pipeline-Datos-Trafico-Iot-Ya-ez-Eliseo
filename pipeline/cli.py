@@ -464,6 +464,25 @@ def run_preprocess_ml(
     return EXIT_OK if report["passed"] else EXIT_VALIDATION
 
 
+def run_ui() -> int:
+    try:
+        from pipeline.ui.app import run_ui as launch_ui
+    except ImportError as exc:
+        print(
+            "Consola TUI: active el venv del repo (Manjaro/Arch no admite pip global).\n"
+            "  bash scripts/setup-venv.sh && source .venv/bin/activate\n"
+            "  python -m pipeline ui",
+            file=sys.stderr,
+        )
+        missing = getattr(exc, "name", None)
+        if missing:
+            print(f"Módulo faltante: {missing}", file=sys.stderr)
+        else:
+            print(f"Detalle: {exc}", file=sys.stderr)
+        return EXIT_USAGE
+    return launch_ui()
+
+
 def run_convert_metadata(json_path: Path, pcap_path: Path, output: Path) -> int:
     try:
         out = convert_upstream_json_to_csv(json_path, pcap_path, output)
@@ -606,6 +625,11 @@ def main(argv: list[str] | None = None) -> int:
         help="Correr benchmark QA (MCC/BACC) para verificar aprendibilidad del dataset",
     )
 
+    sub.add_parser(
+        "ui",
+        help="Consola interactiva (etapas, logs filtrables); misma lógica que run/preprocess-ml",
+    )
+
     args = parser.parse_args(argv)
     _configure_logging(getattr(args, "verbose", False))
 
@@ -643,6 +667,8 @@ def main(argv: list[str] | None = None) -> int:
             scaler=args.scaler,
             benchmark=args.benchmark,
         )
+    if args.command == "ui":
+        return run_ui()
     return EXIT_USAGE
 
 

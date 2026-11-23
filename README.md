@@ -19,8 +19,17 @@ Este repositorio contiene el **código, las pruebas y la documentación técnica
 - Linux o WSL Ubuntu (NFStream nativo; es el **único** extractor soportado)
 - Dependencias en `requirements.txt` / `pyproject.toml`
 
+En **Manjaro/Arch** no use `pip` contra el Python del sistema (error PEP 668). Use el script del repo:
+
 ```bash
-python3 -m venv .venv
+bash scripts/setup-venv.sh
+source .venv/bin/activate
+```
+
+Equivalente manual (con `/usr/bin/python3`, no el `python` de Cursor si está en el PATH):
+
+```bash
+/usr/bin/python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 # opcional, horizontes N-paquetes:
@@ -31,6 +40,7 @@ pip install -e ".[horizon]"
 
 ```text
 pipeline/           # Paquete instalable (CLI + módulos)
+  ui/               # Consola TUI opcional (Textual)
 tests/              # Suite pytest (contrato, etiquetado, ML, CLI)
 fixtures/           # JSON de ejemplo (PCAPs locales, no versionados)
 sample_data/        # CSV auxiliar mínimo para tests
@@ -38,10 +48,43 @@ docs/
   ARCHITECTURE.md         # Módulos, flujo y criterios ISO/IEC 25010
   CONTRATO-INTEGRACION.md # Contrato PCAP + JSON upstream
   GUIA-PRUEBAS-ML.md      # Handoff preprocess-ml / validate_ml
-scripts/            # Utilidades (WSL, merge multi-PCAP)
+scripts/            # setup-venv, pipeline-ui.sh, jupyter-demo.sh, WSL, merge PCAP
+notebooks/          # pipeline_demo.ipynb (interfaz Jupyter)
 ```
 
 Detalle de módulos y calidad: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+## Dos interfaces (misma lógica, públicos distintos)
+
+| Quién | Cómo quiere verlo | Arranque |
+|-------|-------------------|----------|
+| Demo / análisis en navegador (tablas, gráficos) | **Jupyter** | `bash scripts/setup-venv.sh --notebook` → `bash scripts/jupyter-demo.sh` |
+| Corrida con logs filtrables en terminal | **TUI** | `bash scripts/setup-venv.sh` → `bash scripts/pipeline-ui.sh` |
+| Scripts o CI | **CLI** | `python -m pipeline run …` |
+
+Guía corta: [`docs/GUIA-INTERFACES.md`](docs/GUIA-INTERFACES.md).
+
+## Consola interactiva (TUI)
+
+Misma lógica que la CLI, con panel de etapas, logs en vivo y filtros (nivel, búsqueda, solo una etapa), inspirado en el dashboard de logs de local-architecture:
+
+```bash
+bash scripts/setup-venv.sh   # incluye extra [ui]
+bash scripts/pipeline-ui.sh   # recomendado si `python` del PATH es Cursor
+# o:
+source .venv/bin/activate
+python -m pipeline ui
+```
+
+**Problemas habituales (Manjaro + Cursor en el PATH):**
+
+| Síntoma | Qué hacer |
+|--------|-----------|
+| `externally-managed-environment` al hacer `pip install` | No instalar en el sistema; `bash scripts/setup-venv.sh` |
+| `No module named 'pandas'` con `python -m pipeline` | No está en el venv; active o use `.venv/bin/python` |
+| El venv existe pero sin paquetes | `bash scripts/setup-venv.sh` recrea el venv si detecta Cursor como intérprete |
+
+Los comandos `run`, `preprocess-ml` y `convert-metadata` siguen disponibles sin Textual.
 
 ## Uso rápido
 
@@ -71,6 +114,17 @@ python -m pipeline preprocess-ml \
 
 Ver [`docs/GUIA-PRUEBAS-ML.md`](docs/GUIA-PRUEBAS-ML.md).
 
+## Cuaderno Jupyter
+
+`notebooks/pipeline_demo.ipynb` ejecuta el pipeline de punta a punta sobre un PCAP + JSON, revisa manifiesto, correlación evento–flujo y razón Parquet/CSV, corre `preprocess-ml` y cierra con una PoC no supervisada acotada. Invoca la CLI con el mismo intérprete del kernel; no reemplaza los módulos ni las pruebas.
+
+```bash
+bash scripts/setup-venv.sh --notebook
+bash scripts/jupyter-demo.sh
+```
+
+Rutas por defecto en la celda de configuración (editables, o vía `PIPELINE_PCAP`, `PIPELINE_METADATA`, `PIPELINE_OUTPUT`). Los PCAP no se versionan: hay que suministrar uno. Con `RUN_PIPELINE = False` reutiliza un `flows.parquet` ya generado.
+
 ## Artefactos de salida
 
 | Archivo | Descripción |
@@ -97,6 +151,6 @@ pytest -q
 
 La verificación del producto se alinea con dimensiones de **ISO/IEC 25010** (funcionalidad, eficiencia, fiabilidad, usabilidad, seguridad, mantenibilidad, compatibilidad). Ver tabla en [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
-## Licencia
+## Licencia y contexto académico
 
-MIT (ver `pyproject.toml`). Trabajo de título — DIINF, Universidad de Santiago de Chile.
+Código liberado bajo MIT (ver `pyproject.toml`). Forma parte del Trabajo de Título citado arriba; la evaluación del producto se documenta en la memoria bajo criterios **ISO/IEC 25010**.

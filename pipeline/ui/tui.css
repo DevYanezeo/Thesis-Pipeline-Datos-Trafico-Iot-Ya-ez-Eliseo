@@ -1,0 +1,69 @@
+Screen {
+    background: #060e08;
+    color: #39d353;
+}
+
+Header {
+    background: #0d1f12;
+    color: #56ff7a;
+}
+
+Footer {
+    background: #0d1f12;
+    color: #7ee787;
+}
+
+#title {
+    text-style: bold;
+    color: #7fff9a;
+    padding: 1 0;
+}
+
+.menu-button {
+    margin: 1 2;
+    min-width: 40;
+}
+
+.stage-pending {
+    color: #3d6650;
+}
+
+.stage-running {
+    color: #7fff9a;
+    text-style: bold;
+}
+
+.stage-done {
+    color: #56d466;
+}
+
+.stage-error {
+    color: #ff6b6b;
+    text-style: bold;
+}
+
+.log-error {
+    color: #ff6b6b;
+}
+
+.log-warn {
+    color: #e3b341;
+}
+
+.log-info {
+    color: #a8e6b0;
+}
+
+#status_bar {
+    height: 1;
+    background: #0d1f12;
+    padding: 0 1;
+}
+
+#help_overlay {
+    border: round #39d353;
+    background: #0a1a0f;
+    padding: 1 2;
+    width: 72;
+    height: auto;
+}
